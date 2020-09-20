@@ -4,8 +4,13 @@ import classnames from 'classnames';
 import styled from 'styled-components';
 import { Link as RouteLink } from '@reach/router';
 
-const Component = styled(RouteLink)`
+const ComponentLink = styled(RouteLink)`
   color: #fff;
+  font-weight: bold;
+`;
+
+const Component = styled.a`
+  color: ${({ theme }) => theme.palette.primary};
   font-weight: bold;
 `;
 
@@ -16,16 +21,16 @@ const Link = ({ href, to, children, className, disabled, ...rest }) => {
 
   if (to) {
     return (
-      <Component to={!disabled && to} className={classNames} {...rest}>
+      <ComponentLink to={!disabled && to} className={classNames} {...rest}>
         {children}
-      </Component>
+      </ComponentLink>
     );
   }
 
   return (
-    <a href={!disabled && href} className={classNames} {...rest}>
+    <Component href={!disabled && href} className={classNames} {...rest}>
       {children}
-    </a>
+    </Component>
   );
 };
 

@@ -1,14 +1,26 @@
 import React from 'react';
-// import styled from 'styled-components';
 
-// Atoms
+// Layout
 import Text from '../../components/Atoms/Text';
+import Link from '../../components/Atoms/Link';
+import Content from '../../components/Atoms/Content';
+import Center from '../../components/Atoms/Center';
 
 const Home = () => {
   return (
-    <div>
-      <Text>Home</Text>
-    </div>
+    <Center>
+      <Content>
+        <Text theme="title" style={{ marginTop: 20, marginBottom: 10 }}>
+          PaymentsApp
+        </Text>
+        <Text>
+          Desarrollada por{' '}
+          <Link href="https://juanbarrios.netlify.app/" target="blank">
+            Juan C. Barrios S.
+          </Link>
+        </Text>
+      </Content>
+    </Center>
   );
 };
 
