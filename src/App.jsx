@@ -9,6 +9,7 @@ import Navbar from './components/Molecules/Navbar';
 
 // Pages
 import Disconnect from './pages/Disconnect';
+import NotFound from './pages/NotFound';
 
 // Styles
 import { ThemeProvider } from 'styled-components';
@@ -24,12 +25,17 @@ import { GET_USER_LOGGED } from './data/constants';
 // Routes
 import { Route, routes } from './routes';
 
+// Config Dayjs
+import dayjs from 'dayjs';
+import 'dayjs/locale/es';
+dayjs.locale('es');
+
 const App = () => {
   const [isVerifyToken, setIsVerifyToken] = useState(true);
   const [openPageOffline, setOpenPageOffline] = useState(false);
 
   // Verify user with token
-  const [getUserLogged, { loading }] = useMutation(GET_USER_LOGGED, {
+  const [getUserLogged, { loading, client }] = useMutation(GET_USER_LOGGED, {
     pollInterval: 15 * 60 * 1000,
   });
 
@@ -55,12 +61,10 @@ const App = () => {
   // Offline
   useEffect(() => {
     window.addEventListener('online', () => {
-      console.log('Connect');
       setOpenPageOffline(false);
       window.location.reload();
     });
     window.addEventListener('offline', () => {
-      console.log('Perdida');
       setOpenPageOffline(true);
     });
   }, []);
@@ -71,7 +75,7 @@ const App = () => {
     <Suspense fallback={<Loader />}>
       <ThemeProvider theme={theme}>
         <GlobalResets />
-        <Navbar />
+        <Navbar logOutApollo={() => client.resetStore()} />
         <Container>
           {openPageOffline && <Disconnect />}
           {!openPageOffline && (
@@ -85,6 +89,7 @@ const App = () => {
                     {...routeProps}
                   />
                 ))}
+              <NotFound default />
             </Router>
           )}
         </Container>

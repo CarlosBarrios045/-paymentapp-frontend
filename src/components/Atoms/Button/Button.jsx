@@ -7,16 +7,22 @@ const ButtonWrapper = styled.button`
   color: rgba(0, 0, 0, 0.8);
   font-size: 14px;
   font-weight: bold;
-  background-color: ${({ theme }) => theme.palette.secondary};
+  background-color: ${({ color, theme }) => theme.palette[color]};
   border: none;
   border-radius: 5px;
-  padding: 0.6rem 1.5rem;
+  width: 130px;
+  height: 35px;
   cursor: pointer;
   transition: ease 0.6s;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4);
 
   &:hover {
-    background-color: ${({ theme }) => theme.palette.secondaryDark};
+    background-color: ${({ color, theme }) => theme.palette[`${color}Dark`]};
+  }
+
+  &:disabled {
+    background-color: #ccc;
+    color: rgba(0, 0, 0, 0.2);
   }
 `;
 
@@ -26,7 +32,7 @@ const Button = ({ className, style, children, color, ...rest }) => {
   });
 
   return (
-    <ButtonWrapper className={classNames} style={style} {...rest}>
+    <ButtonWrapper className={classNames} style={style} color={color} {...rest}>
       {children}
     </ButtonWrapper>
   );
@@ -42,7 +48,7 @@ Button.propTypes = {
 Button.defaultProps = {
   className: '',
   style: {},
-  color: 'primary',
+  color: 'secondary',
 };
 
 export default Button;

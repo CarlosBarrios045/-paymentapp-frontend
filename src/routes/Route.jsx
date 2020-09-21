@@ -43,6 +43,7 @@ const RouterRoot = ({
 RouterRoot.propTypes = {
   component: PropTypes.elementType.isRequired,
   path: PropTypes.string.isRequired,
+  exact: PropTypes.bool,
   isAuthenticated: PropTypes.bool,
   isAdmin: PropTypes.bool,
   type: PropTypes.oneOf(['public', 'private', 'restricted']),
@@ -53,6 +54,7 @@ RouterRoot.defaultProps = {
   type: 'public',
   typeRole: 'ALL',
   isAdmin: false,
+  exact: true,
   isAuthenticated: false,
 };
 

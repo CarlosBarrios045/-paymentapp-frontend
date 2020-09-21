@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-import styled from 'styled-components';
 import { useMutation } from '@apollo/client';
 import Swal from 'sweetalert2';
 import { navigate } from '@reach/router';
@@ -13,15 +12,8 @@ import ContextAuth from '../../../context/contextAuth';
 // Atoms
 import Input from '../../Atoms/Input';
 import Button from '../../Atoms/Button';
-
-const FormContent = styled.form`
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 2rem;
-`;
+import Content from '../../Atoms/Content';
+import Form from '../../Atoms/Form';
 
 const LoginForm = () => {
   // State
@@ -67,29 +59,31 @@ const LoginForm = () => {
   };
 
   return (
-    <FormContent onSubmit={handleSubmit}>
-      <Input
-        type="email"
-        label="Email"
-        placeholder="Ej: correo@gmail.com"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        required
-      />
-      <Input
-        type="password"
-        label="Contraseña"
-        placeholder="Ej: 1234"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        styleDiv={{ margin: '20px 0' }}
-        required
-      />
+    <Content theme="secondary">
+      <Form onSubmit={handleSubmit}>
+        <Input
+          type="email"
+          label="Email"
+          placeholder="Ej: correo@gmail.com"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <Input
+          type="password"
+          label="Contraseña"
+          placeholder="Ej: 1234"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          styleDiv={{ margin: '20px 0' }}
+          required
+        />
 
-      <Button type="submit" disabled={!email || !password || loading}>
-        Iniciar sesión
-      </Button>
-    </FormContent>
+        <Button type="submit" disabled={!email || !password || loading}>
+          Iniciar sesión
+        </Button>
+      </Form>
+    </Content>
   );
 };
 

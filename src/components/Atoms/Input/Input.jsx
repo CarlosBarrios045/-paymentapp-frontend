@@ -8,7 +8,17 @@ const InputWrapper = styled.input`
   height: 30px;
   border-radius: 6px;
   padding-left: 10px;
-  width: 400px;
+  width: 100%;
+  font-size: 14px;
+  background-color: #e8f0fe;
+`;
+
+const SelectWrapper = styled.select`
+  border: 2px solid ${({ theme }) => theme.palette.secondary};
+  height: 30px;
+  border-radius: 6px;
+  padding-left: 10px;
+  width: 100%;
   font-size: 14px;
   background-color: #e8f0fe;
 `;
@@ -20,16 +30,26 @@ const Label = styled.p`
   font-weight: bold;
 `;
 
-const Input = ({ className, label, styleDiv, ...rest }) => {
+const Div = styled.div`
+  width: 100%;
+`;
+
+const Input = ({ className, label, styleDiv, type, children, ...rest }) => {
   const classNames = classnames({
     [className]: !!className,
   });
 
   return (
-    <div style={styleDiv}>
+    <Div style={styleDiv}>
       {label && <Label>{label}</Label>}
-      <InputWrapper className={classNames} {...rest} />
-    </div>
+      {type === 'select' ? (
+        <SelectWrapper className={classNames} {...rest}>
+          {children}
+        </SelectWrapper>
+      ) : (
+        <InputWrapper className={classNames} type={type} {...rest} />
+      )}
+    </Div>
   );
 };
 
@@ -37,12 +57,16 @@ Input.propTypes = {
   className: PropTypes.string,
   label: PropTypes.string,
   styleDiv: PropTypes.object,
+  type: PropTypes.string,
+  children: PropTypes.node,
 };
 
 Input.defaultProps = {
   className: '',
   label: '',
   styleDiv: {},
+  type: 'text',
+  children: '',
 };
 
 export default Input;

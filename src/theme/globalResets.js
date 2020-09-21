@@ -7,7 +7,7 @@ export default createGlobalStyle`
     padding: 0;
     outline: none;
     box-sizing: border-box;
-    font-family: "Montserrat" !important;
+    font-family: 'Montserrat', sans-serif;
   }
 
   ul {
@@ -19,6 +19,7 @@ export default createGlobalStyle`
   }
 
   body {
+    width: 100vw;
     background-color: ${({ theme }) => theme.palette.secondary};
   }
 `;

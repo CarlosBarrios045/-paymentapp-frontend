@@ -16,7 +16,7 @@ import App from './App';
 
 // Authorization Apollo
 const httpLink = createHttpLink({
-  uri: 'http://localhost:4000/graphql',
+  uri: 'https://payment-app-challenge.herokuapp.com/',
   credentials: 'include',
 });
 
@@ -33,7 +33,7 @@ const authLink = setContext((_, { headers }) => {
 
 // Config Apollo
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql',
+  uri: 'https://payment-app-challenge.herokuapp.com/',
   link: authLink.concat(httpLink),
   cache: new InMemoryCache({
     addTypename: false,
