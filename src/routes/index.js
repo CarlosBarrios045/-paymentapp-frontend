@@ -1,11 +1,11 @@
 import Route from './Route';
 
 // Pages
-const Home = import('../pages/Home');
-const Login = import('../pages/Login');
-const Clients = import('../pages/Clients');
-const SignUp = import('../pages/SignUp');
-const Payments = import('../pages/Payments');
+import Home from '../pages/Home';
+import Login from '../pages/Login';
+import Clients from '../pages/Clients';
+import SignUp from '../pages/SignUp';
+import Payments from '../pages/Payments';
 
 const routes = [
   {
