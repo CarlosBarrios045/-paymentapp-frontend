@@ -85,7 +85,11 @@ const Navbar = ({ logOutApollo }) => {
   const Links = () =>
     isAuthenticated ? (
       <FlexColumn openMenu={openMenu}>
-        {isClient && <Link to="/perfil">Ver perfil</Link>}
+        {isClient && (
+          <Link to="/perfil" style={{ marginRight: 20 }}>
+            Ver perfil
+          </Link>
+        )}
 
         {isAdmin && (
           <>

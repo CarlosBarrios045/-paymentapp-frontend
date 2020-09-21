@@ -18,8 +18,7 @@ export default createGlobalStyle`
     text-decoration: none;
   }
 
-  body {
-    width: 100vw;
+  body { 
     background-color: ${({ theme }) => theme.palette.secondary};
   }
 `;
