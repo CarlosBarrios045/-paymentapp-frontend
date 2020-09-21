@@ -1,13 +1,11 @@
-import { lazy } from 'react';
-
 import Route from './Route';
 
 // Pages
-const Home = lazy(() => import('../pages/Home'));
-const Login = lazy(() => import('../pages/Login'));
-const Clients = lazy(() => import('../pages/Clients'));
-const SignUp = lazy(() => import('../pages/SignUp'));
-const Payments = lazy(() => import('../pages/Payments'));
+const Home = import('../pages/Home');
+const Login = import('../pages/Login');
+const Clients = import('../pages/Clients');
+const SignUp = import('../pages/SignUp');
+const Payments = import('../pages/Payments');
 
 const routes = [
   {
